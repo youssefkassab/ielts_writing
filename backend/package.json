@@ -1,0 +1,18 @@
+{
+  "name": "ILTS",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "start_test": "nodemon testapp.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0",
+    "nodemon": "^3.1.10",
+    "onnxruntime-node": "^1.22.0-rev"
+  }
+}
