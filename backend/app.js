@@ -118,25 +118,26 @@ console.log("data 1 ✅",questionText, essayText);
             'assignment': new onnx.Tensor('string', [questionText], [1,1]),
             'full_text': new onnx.Tensor('string', [essayText], [1,1])
         };
-       console.log( "Feeds for ONNX model:", feeds.assignment, feeds.full_text.data);
 
         const results = await session.run(feeds);
         console.log("Result keys:", Object.keys(results));
-
-        const predictionLabel = results.label.data[0]; // adjust 'label' to your output name
-        console.log(`🎯 Prediction raw value: ${predictionLabel}`);
-
+        const outputName = Object.keys(results)[0];
+        const prediction = results[outputName].data[0];
         let ILTSRESULT;
-        if (predictionLabel >= 0 && predictionLabel < 6) {
+        if (prediction >= 0 && prediction < 6) {
             ILTSRESULT = 'Need improvement';
-        } else if (predictionLabel >= 6 && predictionLabel < 7) {
+        } else if (prediction >= 6 && prediction < 7) {
             ILTSRESULT = 'Good';
         } else {
             ILTSRESULT = 'Excellent';
         }
+        // const prediction = results.label.data[0]; // adjust 'label' to your output name
+        console.log(`🎯 Prediction raw value: ${ILTSRESULT, prediction}`);
+
+        
 
         res.json({
-            band: predictionLabel,
+            band: prediction,
             message: ILTSRESULT
         });
 
