@@ -43,7 +43,7 @@ sign.onclick = (event) => {
         // This block handles the successful response from your API
         if (data.success) {
             // If signup was successful, redirect the user to the login page
-            window.location.href = "login.html";
+            window.location.href = "/login";
         } else {
             // If signup was not successful (e.g., server returned success: false)
             // Display the error message from the server to the user
@@ -58,3 +58,22 @@ sign.onclick = (event) => {
         alert("An error occurred during sign up: " + error.message);
     });
 };
+
+// Example: Accessing a protected page with token
+const token = localStorage.getItem('token');
+fetch('http://localhost:3000/signup', {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + token
+  }
+})
+.then(response => {
+  if (response.ok) {
+    // If the response is HTML, redirect to the page
+    window.location.href = '/signup';
+  } else {
+    return response.json().then(data => {
+      alert(data.message || 'Access denied.');
+    });
+  }
+});

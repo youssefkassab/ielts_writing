@@ -17,6 +17,10 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     .then(data => {
         if (data.success) {
             alert(data.message); // Login successful
+            if (data.token) {
+                // Save the token to localStorage for later use
+                localStorage.setItem('token', data.token);
+            }
             if (data.redirectTo) {
                 window.location.href = data.redirectTo; // Redirect to specified URL
             }
