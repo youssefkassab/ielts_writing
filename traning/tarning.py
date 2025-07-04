@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import accuracy_score, classification_report
 from skl2onnx import convert_sklearn
 from skl2onnx.common.data_types import StringTensorType
@@ -14,10 +14,10 @@ df = pd.read_csv("./persuade_2.0_human_scores_demo_id_github.csv")
 print("Dataset loaded:")
 print(df.head())
 
-X = df[[ "prompt_name" , "full_text" ]]
+X = df[[ "assignment" , "full_text" ]]
 y = df["holistic_essay_score"].astype(int)
 X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.01, random_state=42
+    X, y, test_size=0.1, random_state=42
 )
 
 # ===========================================
@@ -25,7 +25,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 # ===========================================
 preprocessor = ColumnTransformer(
     transformers=[
-        ('prompt_name_tfidf', TfidfVectorizer(max_features=3000), 'prompt_name'),
+        ('assignment_tfidf', TfidfVectorizer(max_features=3000), 'assignment'),
         ('full_text_tfidf', TfidfVectorizer(max_features=5000), 'full_text')
     ]
 )
@@ -35,7 +35,7 @@ preprocessor = ColumnTransformer(
 # ===========================================
 pipeline = Pipeline([
     ('pre', preprocessor),
-    ('clf', RandomForestClassifier(n_estimators=100, random_state=42))
+    ('clf', GradientBoostingRegressor(n_estimators=200, max_depth=5))
 ])
 
 # ===========================================
@@ -54,7 +54,7 @@ print("Classification report:\n", classification_report(y_test, y_pred))
 # 7. Export to ONNX
 
 initial_type = [
-    ('prompt_name', StringTensorType([1,None])),
+    ('assignment', StringTensorType([1,None])),
     ('full_text', StringTensorType([1,None]))
 ]
 
