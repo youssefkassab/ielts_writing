@@ -28,8 +28,12 @@ console.log("📄assignment:", assignment);
         // console.log("Result keys:", Object.keys(results));
 
         // Use the actual output name from your ONNX model
-        const prediction = results.label.data[0];
-        console.log(`🎯 Prediction: ${prediction}` , results);
+        // Print result keys for debugging
+        console.log('Result keys:', Object.keys(results));
+        // Try to access the correct output name
+        const outputName = Object.keys(results)[0];
+        const prediction = results[outputName].data[0];
+        console.log(`🎯 Prediction: ${prediction}`, results);
 
     } catch (err) {
         console.error("❌ Inference error:", err);
