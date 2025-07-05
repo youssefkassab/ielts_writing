@@ -132,7 +132,7 @@ console.log("data 1 ✅",questionText, essayText);
             ILTSRESULT = 'Excellent';
         }
         // const prediction = results.label.data[0]; // adjust 'label' to your output name
-        console.log(`🎯 Prediction raw value: ${ILTSRESULT, prediction}`);
+        console.log(`🎯 Prediction raw value: ${ILTSRESULT}`);
 
         
 

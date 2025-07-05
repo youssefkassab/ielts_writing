@@ -69,7 +69,7 @@ function requireAuthOrRedirect() {
             //     if (answer.toLowerCase().includes(k.toLowerCase())) score += 10;
             // });
             // score = Math.round(Math.min(score, 100));
-            document.getElementById('scoreSection').textContent = `Your AI Writing Score: ${data}/100`;
+            document.getElementById('scoreSection').textContent = `Your AI Writing Score: ${data.message} you got ${data.band}/10`;
         }).catch(error => {
             console.error('Error:', error);
         })
