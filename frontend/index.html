@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IELTS Writing Score</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:700,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Roboto', Arial, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #2c5364 90%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: rgba(30, 41, 59, 0.97);
+            border-radius: 22px;
+            box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.37);
+            padding: 64px 48px;
+            max-width: 900px;
+            width: 95vw;
+            text-align: center;
+            margin: 40px 0;
+        }
+        .header-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+        }
+        .header-section img {
+            width: 120px;
+            height: 120px;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px rgba(0,198,255,0.15);
+            object-fit: cover;
+            background: #1e293b;
+        }
+        h1 {
+            font-size: 3.2rem;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #00c6ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .subtitle {
+            font-size: 1.4rem;
+            color: #b3e5fc;
+            margin-bottom: 32px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            gap: 32px;
+            margin: 40px 0 32px 0;
+            flex-wrap: wrap;
+        }
+        .feature-card {
+            background: rgba(44,83,100,0.85);
+            border-radius: 14px;
+            padding: 28px 22px;
+            width: 240px;
+            min-width: 200px;
+            box-shadow: 0 2px 16px rgba(0,198,255,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .feature-card img {
+            width: 48px;
+            height: 48px;
+            margin-bottom: 14px;
+        }
+        .feature-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #00c6ff;
+        }
+        .feature-desc {
+            font-size: 1rem;
+            color: #cfd8dc;
+        }
+        .btn {
+            display: inline-block;
+            padding: 18px 48px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(90deg, #ff512f, #dd2476);
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(221,36,118,0.2);
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+            text-decoration: none;
+            margin-top: 18px;
+        }
+        .btn:hover {
+            background: linear-gradient(90deg, #dd2476, #ff512f);
+            transform: translateY(-2px) scale(1.04);
+        }
+        @media (max-width: 900px) {
+            .container {
+                padding: 32px 8px;
+            }
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-card {
+                width: 90vw;
+                margin-bottom: 18px;
+            }
+            .header-section {
+                flex-direction: column;
+                gap: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header-section">
+            <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=facearea&w=256&q=80" alt="AI Writing" />
+            <div>
+                <h1>IELTS Writing Score</h1>
+                <div class="subtitle">
+                    Unlock your potential with our smart IELTS Writing Score analyzer.<br>
+                    Get instant feedback, track your progress, and boost your band score with AI-powered insights.
+                </div>
+            </div>
+        </div>
+        <div class="features">
+            <div class="feature-card">
+                <img src="https://img.icons8.com/color/96/000000/artificial-intelligence.png" alt="AI Feedback"/>
+                <div class="feature-title">AI-Powered Feedback</div>
+                <div class="feature-desc">Receive instant, detailed analysis of your writing with advanced AI models.</div>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/color/96/000000/combo-chart--v2.png" alt="Progress Tracking"/>
+                <div class="feature-title">Progress Tracking</div>
+                <div class="feature-desc">Monitor your improvement over time and identify your strengths and weaknesses.</div>
+            </div>
+            <div class="feature-card">
+                <img src="https://img.icons8.com/color/96/000000/idea.png" alt="Smart Suggestions"/>
+                <div class="feature-title">Smart Suggestions</div>
+                <div class="feature-desc">Get actionable tips and resources tailored to your writing style and goals.</div>
+            </div>
+        </div>
+        <a href="/login" class="btn">Try Now</a>
+    </div>
+</body>
+</html>
