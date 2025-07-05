@@ -36,7 +36,7 @@ function requireAuthOrRedirect() {
     }).then(data => {
       if (data && data.success) {
         // Show the protected content
-        document.body.innerHTML += `<h1>${data.message}</h1><p>User: ${data.user.email}</p>`;
+       
       }
     })
     .catch(() => {

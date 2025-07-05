@@ -122,7 +122,9 @@ console.log("data 1 ✅",questionText, essayText);
         const results = await session.run(feeds);
         console.log("Result keys:", Object.keys(results));
         const outputName = Object.keys(results)[0];
-        const prediction = results[outputName].data[0];
+        const predictionRounded = results[outputName].data[0];
+        const prediction = Math.round(predictionRounded * 2) / 2; // Round to nearest 0.5
+        console.log(predictionRounded);
         let ILTSRESULT;
         if (prediction >= 0 && prediction < 6) {
             ILTSRESULT = 'Need improvement';
