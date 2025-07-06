@@ -53,8 +53,7 @@ function authenticateToken(req, res, next) {
 
 // Modify login route to return JWT token
 app.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    console.log("Login attempt:", { email, password }); // Debug log
+    const { email, password } = req.body; // Debug log
     const query = `SELECT * FROM sign_up WHERE email = ?`;
     db.query(query, [email], async (err, results) => {
         if (err) {
@@ -63,11 +62,10 @@ app.post("/login", (req, res) => {
             return;
         }
 
-        console.log("DB results for login:", results); // Debug log
         if (results.length > 0) {
             // Compare hashed password
             const validPassword = await bcrypt.compare(password, results[0].password);
-            console.log("Password valid?", validPassword); // Debug log
+            // Debug log
             if (!validPassword) {
                 return res.status(401).json({ success: false, message: 'Invalid credentials. Please try again.' });
             }
@@ -91,10 +89,8 @@ app.post("/sign_up", async (request, response) => {
     const savequery = "INSERT INTO sign_up SET ?";
     try {
         // Hash the password before saving
-        console.log("Sign up data received:", request.body); // Debug log
         const hashedPassword = await bcrypt.hash(request.body.password, 10);
         const userData = { ...request.body, password: hashedPassword };
-        console.log("User data to save:", userData); // Debug log
         db.query(savequery, userData, (err) => {
             if (err) {
                 console.error('Error executing MySQL query:', err);
@@ -112,7 +108,7 @@ app.post('/result', async (req, res) => {
     try {
         const questionText = req.body.Question || "";
         const essayText = req.body.Essay || "";
-console.log("data 1 ✅",questionText, essayText);
+
 
         const feeds = {
             'assignment': new onnx.Tensor('string', [questionText], [1,1]),
@@ -124,7 +120,7 @@ console.log("data 1 ✅",questionText, essayText);
         const outputName = Object.keys(results)[0];
         const predictionRounded = results[outputName].data[0];
         const prediction = Math.round(predictionRounded * 2) / 2; // Round to nearest 0.5
-        console.log(predictionRounded);
+        
         let ILTSRESULT;
         if (prediction >= 0 && prediction < 6) {
             ILTSRESULT = 'Need improvement';
