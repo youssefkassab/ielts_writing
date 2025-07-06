@@ -21,7 +21,7 @@ sign.onclick = (event) => {
     };
 
     // Send a POST request to your signup API endpoint
-    fetch("http://localhost:3000/sign_up", {
+    fetch("http:///sign_up", {
         method: "POST", // Specify the HTTP method
         headers: {
             "Content-Type": "application/json" // Tell the server we're sending JSON
@@ -61,7 +61,7 @@ sign.onclick = (event) => {
 
 // Example: Accessing a protected page with token
 const token = localStorage.getItem('token');
-fetch('http://localhost:3000/signup', {
+fetch('http:///signup', {
   method: 'GET',
   headers: {
     'Authorization': 'Bearer ' + token

@@ -6,7 +6,7 @@ document.getElementById('loginForm').addEventListener('submit', function (e) {
     const password = document.getElementById('password').value;
 
     // Send AJAX request to the server
-    fetch("http://localhost:3000/login", {
+    fetch("http:///login", {
         method: 'POST',     
         headers: {
             'Content-Type': 'application/json'

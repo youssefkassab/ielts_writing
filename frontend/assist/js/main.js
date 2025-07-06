@@ -26,7 +26,7 @@ function requireAuthOrRedirect() {
     }
 }
 
-  fetchProtectedResource('http://localhost:3000/api/protected-content').then(response => {
+  fetchProtectedResource('http:///api/protected-content').then(response => {
       if (!response.ok) {
         // Not authenticated, redirect to login
         window.location.href = '/login';
@@ -45,7 +45,7 @@ function requireAuthOrRedirect() {
     function scoreAnswer() {
         const Question = document.getElementById('questionBox').value;
         const Essay = document.getElementById('answer').value;
-    fetch("http://localhost:3000/result", {
+    fetch("http:///result", {
         method: 'POST',     
         headers: {
             'Content-Type': 'application/json'
@@ -78,7 +78,7 @@ function requireAuthOrRedirect() {
 //     e.preventDefault(); // Prevent form submission
 //     const Question = document.getElementById('questionBox').value;
 //     const Essay = document.getElementById('answer').value;
-//     fetch("http://localhost:3000/result", {
+//     fetch("http:///result", {
 //         method: 'POST',     
 //         headers: {
 //             'Content-Type': 'application/json'
@@ -108,7 +108,7 @@ function requireAuthOrRedirect() {
 //     })
 
 // Example usage: Fetch user profile (protected)
-// fetchProtectedResource('http://localhost:3000/profile')
+// fetchProtectedResource('http:///profile')
 //   .then(response => response.json())
 //   .then(data => console.log(data))
 //   .catch(err => console.error(err));
