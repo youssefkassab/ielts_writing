@@ -33,6 +33,7 @@ db.connect((err)=>{
 })
 const JWT_SECRET = '248f1d566f6c50352a93625aaa9d3769c4b69749d400e87b718f32dd7f4b4e9'; 
 const bcrypt = require('bcrypt'); // Add bcrypt for password hashing
+const { log } = require('console');
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization'];
@@ -109,17 +110,18 @@ app.post('/result', async (req, res) => {
         const questionText = req.body.Question || "";
         const essayText = req.body.Essay || "";
 
-
+        
         const feeds = {
             'assignment': new onnx.Tensor('string', [questionText], [1,1]),
             'full_text': new onnx.Tensor('string', [essayText], [1,1])
         };
 
         const results = await session.run(feeds);
-        console.log("Result keys:", Object.keys(results));
+        // console.log("Result keys:", Object.keys(results));
         const outputName = Object.keys(results)[0];
         const predictionRounded = results[outputName].data[0];
         const prediction = Math.round(predictionRounded * 2) / 2; // Round to nearest 0.5
+        console.log(prediction);
         
         let ILTSRESULT;
         if (prediction >= 0 && prediction < 6) {
